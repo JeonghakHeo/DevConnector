@@ -1,0 +1,2 @@
+node_modules/
+# I don't want the node modules forlder the dependencies to get added to the repository
