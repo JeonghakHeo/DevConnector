@@ -1,3 +1,7 @@
+// npm init <- initialize package.json
+// npm i express express-validation bcryptjs config gravatar jsonwebtoken mongoose request 
+// npm i -D nodemon concurrently 
+
 const express = require('express');
 
 const app = express();
