@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://charlie4142:tpdl3380@node-express-jwt-auth.zzprr.mongodb.net/node-auth?retryWrites=true&w=majority"
+}
