@@ -6,11 +6,12 @@ const connectDB = async () => {
   try {
     await mongoose.connect(db, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useCreateIndex: true
     });
 
     console.log('MongoDB Connected...')
-  } catch(err) {
+  } catch (err) {
     console.error(err.message);
     // Exit or escape the process with failure. We want the app to fail when failed to connect to db
     process.exit(1);
