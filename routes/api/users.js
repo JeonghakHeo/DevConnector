@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
@@ -56,7 +58,25 @@ router.post('/',
       await user.save();
 
       // Return jsonwebtoken
-      res.send('User registered');
+      const payload = {
+
+        // this is a user after it's saved to db 
+        user: {
+          id: user.id // id: user._id works the same. user.id also works because of mongoose.
+        }
+      }
+
+
+      // https://www.npmjs.com/package/jsonwebtoken#jwtsignpayload-secretorprivatekey-options-callback
+      // jwt.sign(payload, secretOrPrivateKey, [options, callback])
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 360000 },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        });
 
     } catch (err) {
       console.error(err.message);
