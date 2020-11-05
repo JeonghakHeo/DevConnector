@@ -58,12 +58,12 @@ router.post('/',
       profileFields.skills = skills.split(',').map(skill => skill.trim());
     }
 
-    profileFields.socials = {};
-    if (youtube) profileFields.socials.youtube = youtube;
-    if (twitter) profileFields.socials.twitter = twitter;
-    if (facebook) profileFields.socials.facebook = facebook;
-    if (linkedin) profileFields.socials.linkedin = linkedin;
-    if (instagram) profileFields.socials.instagram = instagram;
+    profileFields.social = {};
+    if (youtube) profileFields.social.youtube = youtube;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (facebook) profileFields.social.facebook = facebook;
+    if (linkedin) profileFields.social.linkedin = linkedin;
+    if (instagram) profileFields.social.instagram = instagram;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id }); // <- user id comes from token
@@ -88,5 +88,41 @@ router.post('/',
   }
 
 );
+
+// @route   GET api/profile
+// @desc    Get all profiles
+// @access  Public
+router.get('/', async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+    res.json(profiles);
+  }
+  catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error')
+  }
+});
+
+// @route   GET api/profile/user/user_id
+// @desc    Get profiles by user ID
+// @access  Public
+router.get('/user/:user_id', async (req, res) => {
+  try {
+    //                                            from: user/user_id 
+    const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name,', 'avatar']);
+
+    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
+
+    res.json(profile);
+  }
+  catch (err) {
+    console.error(err.message);
+    if (err.kind == 'ObjectId') {
+      return res.status(400).json({ msg: 'Profile not found' });
+    }
+    res.status(500).send('Server Error')
+  }
+});
+
 
 module.exports = router;
