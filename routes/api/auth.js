@@ -58,8 +58,6 @@ router.post('/',
 
       // Return jsonwebtoken
       const payload = {
-
-        // this is a user after it's saved to db 
         user: {
           id: user.id // id: user._id works the same. user.id also works because of mongoose.
         }
