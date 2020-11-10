@@ -8,7 +8,7 @@ const { check, validationResult } = require('express-validator');
 const User = require('../../models/User');
 
 // @route   GET api/auth
-// @desc    Test route
+// @desc    Get authenticated user
 // @access  Public 
 
 // middleware applied to protect route by adding auth before async (req, res) => {} 
