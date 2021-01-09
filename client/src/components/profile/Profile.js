@@ -4,14 +4,16 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Spinner from '../layout/Spinner'
 import { getProfileById } from '../../actions/profile'
+import ProfileTop from '../profile/ProfileTop'
+import ProfileAbout from '../profile/ProfileAbout'
 
 const Profile = ({ match, getProfileById, profile: { profile, loading }, auth }) => {
 
   useEffect(() => {
     getProfileById(match.params.id)
-  }, [getProfileById])
+  }, [getProfileById, match.params.id])
 
-  return (
+  return profile ? (
     <Fragment>
       { profile === null || loading ? (<Spinner />) : (
         <Fragment>
@@ -21,8 +23,12 @@ const Profile = ({ match, getProfileById, profile: { profile, loading }, auth })
           )}
         </Fragment>
       )}
+      <div class="profile-grid my-1">
+        <ProfileTop profile={profile} />
+        <ProfileAbout profile={profile} />
+      </div>
     </Fragment>
-  )
+  ) : null
 }
 
 Profile.propTypes = {
