@@ -7,7 +7,7 @@ const ProfileItem = ({ profile: { user: { _id, name, avatar }, status, location,
       <img className="round-img" src={avatar} alt="" />
       <div>
         <h2>{name}</h2>
-        <p>{status} at {company && <span>{company}</span>}</p>
+        <p>{status} {company && <span>at {company}</span>}</p>
         <p className='my-1'>{location}</p>
         <Link to={`/profile/${_id}`} className="btn btn-primary">View Profile</Link>
       </div>
