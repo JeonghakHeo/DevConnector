@@ -11,7 +11,7 @@ const CommentForm = ({ postId, addComment }) => {
     e.preventDefault();
     addComment(postId, { text });
     setText('');
-  }
+  };
 
   return (
     <div className="post-form">
@@ -24,10 +24,10 @@ const CommentForm = ({ postId, addComment }) => {
       </form>
     </div>
   )
-}
+};
 
 CommentForm.propTypes = {
   addComment: PropTypes.func.isRequired
-}
+};
 
-export default connect(null, { addComment })(CommentForm)
+export default connect(null, { addComment })(CommentForm);
