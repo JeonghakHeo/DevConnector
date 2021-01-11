@@ -32,7 +32,8 @@ const profile = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: payload
+        error: payload,
+        profile: null
       }
 
     case CLEAR_PROFILE:
