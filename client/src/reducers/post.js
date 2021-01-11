@@ -9,7 +9,7 @@ const initialState = {
 
 const post = (state = initialState, action) => {
 
-  const { type, action } = action;
+  const { type, payload } = action;
 
   switch (type) {
     case GET_POSTS:
