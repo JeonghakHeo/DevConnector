@@ -10,7 +10,6 @@ connectDB();
 // Init Middleware. To be able to get data in req.body
 app.use(express.json({ extended: false }));
 
-
 // Define Routes
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
