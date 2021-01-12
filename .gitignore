@@ -1,3 +1,2 @@
 node_modules/
-config/
-# I don't want the node modules forlder the dependencies to get added to the repository
+config/default.json
