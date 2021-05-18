@@ -29,5 +29,13 @@
   "devDependencies": {
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeonghakHeo/DevConnector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JeonghakHeo/DevConnector/issues"
+  },
+  "homepage": "https://github.com/JeonghakHeo/DevConnector#readme"
 }
