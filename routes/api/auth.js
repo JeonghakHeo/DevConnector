@@ -9,7 +9,7 @@ const User = require('../../models/User');
 
 // @route   GET api/auth
 // @desc    Get authenticated user
-// @access  Public 
+// @access  Private 
 
 // middleware applied to protect route by adding auth before async (req, res) => {} 
 router.get('/', auth, async (req, res) => {

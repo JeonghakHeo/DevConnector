@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
 
   // Check if no token
   if (!token) {
-    return res.status(401).json({ msg: 'No token, authorization denide' }); // 401 means not authorized
+    return res.status(401).json({ msg: 'No token, authorization denied' }); // 401 means not authorized
   }
 
   // Verify token

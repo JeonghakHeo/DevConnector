@@ -63,7 +63,7 @@ router.get('/:id', auth, async (req, res) => {
     const post = await Post.findById(req.params.id);
 
     if (!post) {
-      return res.status(404).json({ mgs: 'Post not found' }) // 404 not found
+      return res.status(404).json({ msg: 'Post not found' }) // 404 not found
     }
 
     res.json(post);
@@ -71,7 +71,7 @@ router.get('/:id', auth, async (req, res) => {
   catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
-      return res.status(404).json({ mgs: 'Post not found' }) // 404 not found
+      return res.status(404).json({ msg: 'Post not found' }) // 404 not found
     }
     res.status(500).send('Server Error')
   }

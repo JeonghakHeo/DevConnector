@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 const ProfileItem = ({ profile: { user: { _id, name, avatar }, status, location, skills, company } }) => {
   return (
@@ -23,5 +24,9 @@ const ProfileItem = ({ profile: { user: { _id, name, avatar }, status, location,
     </div>
   )
 }
+
+ProfileItem.propTypes = {
+  profile: PropTypes.object.isRequired
+};
 
 export default ProfileItem
